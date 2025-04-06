@@ -1,8 +1,5 @@
 vim9script
 
-# Test for the vim-markdown plugin
-# Copied and adjusted from Vim distribution
-
 import "./common.vim"
 
 # Test file 1
