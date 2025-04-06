@@ -1,8 +1,9 @@
 # vim-op-surround
 
 Yet another surround plugin.
+
 Differently from existing plugins, the motion here is applied to the end of
-the mapping. Repeat works out-of-the-box.
+the mappings, that you can freely define. Repeat works out-of-the-box.
 
 # Requirements
 

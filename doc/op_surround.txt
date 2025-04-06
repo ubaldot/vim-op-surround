@@ -16,8 +16,9 @@ CONTENTS                                            *op-surround-contents*
 INTRODUCTION                                    *op-surround-introduction*
 
 Yet another surround plugin.
+
 Differently from existing plugins, the motion here is applied to the end of
-the mapping. Repeat works out-of-the-box.
+the mappings that you can define as you want. Repeat works out-of-the-box.
 
 ==============================================================================
 REQUIREMENTS                                    *op-surround-requirements*
