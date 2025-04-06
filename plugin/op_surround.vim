@@ -85,7 +85,20 @@ if exists('g:op_surround_maps')
   endfor
 endif
 
-def OpSurroundMakeBufferMaps()
+def OpSurroundMakeMaps()
+  if exists('g:op_surround_maps')
+    for item in g:op_surround_maps
+      if empty(maparg(item.map, 'n'))
+        exe $"nnoremap {item.map} <ScriptCmd>SetSurroundOpFunc("
+             .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+      endif
+      if empty(maparg(item.map, 'x'))
+        exe $"xnoremap {item.map} <ScriptCmd>SetSurroundOpFunc("
+             .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+      endif
+    endfor
+  endif
+
   if exists('b:op_surround_maps')
     for item in b:op_surround_maps
       exe $"nnoremap <buffer> {item.map} <ScriptCmd>SetSurroundOpFunc("
@@ -96,4 +109,4 @@ def OpSurroundMakeBufferMaps()
   endif
 enddef
 
-command! -nargs=0 OpSurroundMakeBufferMaps OpSurroundMakeBufferMaps()
+command! -nargs=0 OpSurroundMakeMaps OpSurroundMakeMaps()

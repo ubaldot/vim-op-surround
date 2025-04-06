@@ -26,7 +26,6 @@ VIMRC="VIMRC"
 echo "vim9script" > "$VIMRC"
 echo "">> "$VIMRC"
 echo "set runtimepath+=.." >> "$VIMRC"
-echo "set runtimepath+=../after"  >> "$VIMRC"
 
 # Display vimrc content
 echo "----- vimrc content ---------"
@@ -36,7 +35,7 @@ echo ""
 VIM_CMD="$VIM_PRG --clean -Es -u $VIMRC -i NONE --not-a-term"
 
 # Add test files here: OBS! <space> after ','
-TESTS_LIST="['test_op_surround.vim']
+TESTS_LIST="['test_op_surround.vim']"
 
 # All the tests are executed in the same Vim instance
 eval $VIM_CMD " -c \"vim9cmd g:TestFiles = $TESTS_LIST\" -S runner.vim"

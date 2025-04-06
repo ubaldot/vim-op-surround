@@ -50,7 +50,7 @@ Along the same line, you can define buffer-local mappings through the variable
 `b:op_surround_maps`. This is handy in case you want different mappings for
 different filetypes.
 Once you have defined `b:op_surround_maps`, you must run the
-`:OpSurroundMakeBufferMap` command to create the mappings.
+`:OpSurroundMakeMap` command to create the mappings.
 
 ==============================================================================
 LICENSE                                         *op-surround-license*
