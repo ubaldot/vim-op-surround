@@ -3,7 +3,9 @@
 Yet another surround plugin.
 
 Differently from existing plugins, the motion here is applied to the end of
-the mappings, that you can freely define. Repeat works out-of-the-box.
+the mappings, that you can freely define.
+You can also define buffer-local mappings.
+Repeat works out-of-the-box.
 
 # Requirements
 
