@@ -3,7 +3,7 @@
 Yet another surround plugin.
 
 Differently from existing plugins, the motion here is applied to the end of
-the mappings, that you can freely define.
+the mappings, i.e. `<your_map>{motion}`.
 You can also define buffer-local mappings.
 Repeat works out-of-the-box.
 
@@ -25,6 +25,9 @@ You can for example define the following:
     {map: "<leader>{", open_delim: "{", close_delim: "}"}
   ]
 ```
+
+and use `<leader>(iw, <leader>[fa`, etc.
+It also works in visual mode.
 
 In the same way, you can define buffer-local mappings through the variable
 `b:op_surround_maps`. This is handy in case you want different mappings for
