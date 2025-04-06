@@ -25,7 +25,7 @@ Repeat works out-of-the-box.
 ==============================================================================
 REQUIREMENTS                                    *op-surround-requirements*
 
-Vim 9.0 is required.
+Vim 9.1 is required.
 
 ==============================================================================
 USAGE                                            *op-surround-usage*

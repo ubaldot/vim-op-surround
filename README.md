@@ -9,7 +9,7 @@ Repeat works out-of-the-box.
 
 # Requirements
 
-Vim 9.0 is required.
+Vim 9.1 is required.
 
 # Usage
 
