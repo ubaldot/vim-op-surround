@@ -29,6 +29,10 @@ Example:
 ```
 
 and use `<leader>(iw, <leader>[fa`, etc.
+The (behavior) is "toggle" in the sense that if you repeat the same command
+twice it will add and remove the delimiters. For example, go on a word and type
+`<leader>(iw` to add parenthesis. Then, go again on the same work and type
+again `<leader>(iw`. The parenthesis are gone.
 It also works in visual mode.
 
 Along the same line, you can define buffer-local mappings through the variable
