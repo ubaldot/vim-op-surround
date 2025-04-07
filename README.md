@@ -1,6 +1,6 @@
 # vim-op-surround
 
-Yet another surround plugin.
+Quick & dirty surround plugin.
 
 Differently from existing plugins, the motion here is applied to the end of
 the mappings, i.e. `<your_map>{motion}`.

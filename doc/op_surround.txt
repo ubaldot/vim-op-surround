@@ -15,7 +15,7 @@ CONTENTS                                            *op-surround-contents*
 ==============================================================================
 INTRODUCTION                                    *op-surround-introduction*
 
-Yet another surround plugin.
+Quick & dirty surround plugin.
 
 Differently from existing plugins, the motion here is applied to the end of
 the mappings that you can define as you want. It also works in visual mode.
