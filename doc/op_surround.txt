@@ -57,6 +57,8 @@ Along the same line, you can define buffer-local mappings through the variable
 different filetypes.
 Once you have defined `b:op_surround_maps`, you must run the
 `:OpSurroundMakeMap` command to create the mappings.
+But in general, run `:OpSurroundMakeMap` to refresh the mappings, if you happen to
+change them along the way.
 
 ==============================================================================
 LICENSE                                         *op-surround-license*

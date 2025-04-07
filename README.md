@@ -39,4 +39,6 @@ Along the same line, you can define buffer-local mappings through the variable
 `b:op_surround_maps`. This is handy in case you want different mappings for
 different filetypes.
 Once you have defined `b:op_surround_maps`, you must run the
-`:OpSurroundMakeMap` command to create the buffer-local mappings.
+`:OpSurroundMakeMap` command to create the buffer-local mappings. But in
+general, run `:OpSurroundMakeMap` to refresh the mappings, if you happen to
+change them along the way.
