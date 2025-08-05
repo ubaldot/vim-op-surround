@@ -71,5 +71,5 @@ def OpSurroundMakeMappings()
     endfor
   endif
 enddef
-
+OpSurroundMakeMappings()
 command! -nargs=0 OpSurroundMakeMappings OpSurroundMakeMappings()
