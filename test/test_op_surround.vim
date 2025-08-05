@@ -110,6 +110,7 @@ def g:Test_multibyte()
   vnew
   exe $"edit {file_name}"
 
+
   b:op_surround_maps = [
     {map: "sa(", open_delim: "(", close_delim: ")", action: 'append'},
     {map: "sd(", open_delim: "(", close_delim: ")", action: 'delete'},
@@ -121,22 +122,20 @@ def g:Test_multibyte()
   messages clear
   setcursorcharpos(1, 8)
   exe "norm sa(iw"
-  var expected_value =
-    "当然可以，(以下是一段中文文本)："
-  echom assert_equal(expected_value, getline(1))
+  var expected_value = "当然可以，(以下是一段中文文本)："
+  assert_equal(expected_value, getline(1))
 
   exe "norm sd(iw"
-  expected_value =
-    "当然可以，以下是一段中文文本："
-  echom assert_equal(expected_value, getline(1))
+  expected_value = "当然可以，以下是一段中文文本："
+  assert_equal(expected_value, getline(1))
 
   setcursorcharpos(3, 8)
   exe "norm vj[["
-  var expected_value_multiline = [
-  "在现代社会中，[科技的迅速发展改变了人们的生活方式。从智能手机到人工智能，",
-  "人们越来越依赖技]术来完成日常任务。"
-  ]
-  echom assert_equal(expected_value_multiline, getline(3, 4))
+  var expected_value_multiline =<< trim END
+    在现代社会中，\[科技的迅速发展改变了人们的生活方式。从智能手机到人工智能，
+    人们越来越依赖技\]术来完成日常任务。
+  END
+  assert_equal(expected_value_multiline, getline(3, 4))
 
   # Multibyte delimiter
   # If we keep the current buffer mapping '((', then such a mapping will not
@@ -153,7 +152,7 @@ def g:Test_multibyte()
   exe "norm sa(t，"
   expected_value = "因此，我〈们在享受科技成果的同时〉，"
      .. "也需要保持理性思考，平衡科技与人文之间的关系。"
-  echom assert_equal(expected_value, getline(6))
+  assert_equal(expected_value, getline(6))
 
   :%bw!
   Cleanup_testfile(file_name)
