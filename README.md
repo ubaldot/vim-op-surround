@@ -1,11 +1,12 @@
 # vim-op-surround
 
-Quick & dirty surround plugin.
+A simple Vim9 surround plugin!
 
-Differently from existing plugins, the motion here is applied to the end of
-the mappings, i.e. `<your_map>{motion}`.
-You can also define buffer-local mappings.
-Repeat works out-of-the-box.
+The usage follows Vim idioms, adhering to the `<your_map>{motion}` pattern.
+For example, `sa"iw` surrounds the word under the cursor with double quotes,
+and `sa(fa` surrounds the text from the cursor to the next a with parentheses—
+assuming you’ve defined such mappings (see below). It also works in visual
+mode.
 
 # Requirements
 
@@ -13,32 +14,50 @@ Vim 9.1 is required.
 
 # Usage
 
-You have to define mappings through the variable `g:op_surround_maps`. Such a
-variable is a list of dicts, where the dictionaries keys are `map`,
-`open_delim` and `close_delim`.
+You must define your mappings using the `g:op_surround_maps` variable. This
+variable should be a dictionary of dictionaries, where each top-level key is a
+unique identifier for a specific surround mapping.
 
-Example:
+Each mapping dictionary must include the following keys:
 
+- `map`: the key sequence that triggers the surround operation
+- `open_delim`: the opening delimiter to insert
+- `close_delim`: the closing delimiter to insert
+- `action`: can be `'append'` or `'delete'`.
+
+### Example
+
+```vim
+g:op_surround_maps = []
+for [open, close] in [("(", ")"), ("[", "]"), ("{", "}"),
+    ('"', '"'), ("''", "''")]
+  # Append mappings
+  add(g:op_surround_maps, {
+    map: $"sa{open}",
+    open_delim: open,
+    close_delim: close,
+    action: 'append'})
+
+  # Delete mappings
+  add(g:op_surround_maps, {
+    map: $"sd{open}",
+    open_delim: open,
+    close_delim: close,
+    action: 'delete'})
+endfor
 ```
-  g:op_surround_maps = [{map: "<leader>(", open_delim: "(", close_delim: ")"},
-    {map: "<leader>[", open_delim: "[", close_delim: "]"},
-    {map: "<leader>{", open_delim: "{", close_delim: "}"},
-    {map: '<leader>"', open_delim: '"', close_delim: '"'},
-    {map: "<leader>'", open_delim: "''", close_delim: "''"}
-  ]
-```
 
-Now you can use combinations like `<leader>(iw, <leader>[fa`, etc.
-The (behavior) is "toggle" in the sense that if you repeat the same command
-twice it will add and remove the delimiters. For example, go on a word and type
-`<leader>(iw` to add parenthesis. Then, go again on the same work and type
-again `<leader>(iw`. The parenthesis are gone.
-It also works in visual mode.
+The above example set surrounding mappings for typical surrounding items such
+as parenthesis, brackets, quotes, etc.
 
-Along the same line, you can define buffer-local mappings through the variable
-`b:op_surround_maps`. This is handy in case you want different mappings for
-different filetypes.
-Once you have defined `b:op_surround_maps`, you must run the
-`:OpSurroundMakeMap` command to create the buffer-local mappings. But in
-general, run `:OpSurroundMakeMap` to refresh the mappings, if you happen to
-change them along the way.
+In the same way, you can define buffer-local surrounding maps through the
+dictionary `b:op_surround_maps` followed by the command
+`:OpSurroundMakeMappings`.
+
+This also works in _visual mode_.
+
+## License
+
+BSD-3.
+
+<!-- DO NOT REMOVE vim-markdown-extras references DO NOT REMOVE-->
