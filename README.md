@@ -52,6 +52,10 @@ In the same way, you can define buffer-local surrounding maps through the
 dictionary `b:op_surround_maps` followed by the command
 `:OpSurroundMakeMappings` to actually set the mappings.
 
+> [!NOTE]
+>
+> If a mapping already exists, it will not be overwritten!
+
 ## License
 
 BSD-3.
