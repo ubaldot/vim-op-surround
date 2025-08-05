@@ -2,6 +2,10 @@
 
 A simple Vim9 surround plugin!
 
+<p align="center">
+<img src="/vim_op_surround.gif" width="75%" height="75%">
+</p>
+
 The usage follows Vim idioms, adhering to the `<your_map>{motion}` pattern.
 For example, `sa"iw` surrounds the word under the cursor with double quotes,
 and `sa(fa` surrounds the text from the cursor to the next a with parentheses—
@@ -20,9 +24,9 @@ unique identifier for a specific surround mapping.
 
 Each mapping dictionary must include the following keys:
 
-- `map`: the key sequence that triggers the surround operation
-- `open_delim`: the opening delimiter to insert
-- `close_delim`: the closing delimiter to insert
+- `map`: the key sequence that triggers the surround operation,
+- `open_delim`: the opening delimiter to insert,
+- `close_delim`: the closing delimiter to insert,
 - `action`: can be `'append'` or `'delete'`.
 
 ### Example

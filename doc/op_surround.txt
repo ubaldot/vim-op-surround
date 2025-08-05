@@ -35,9 +35,9 @@ You must define your mappings using the `g:op_surround_maps` variable. This
 variable should be a list of dictionaries and each mapping dictionary must
 include the following keys:
 
-- `map`: the key sequence that triggers the surround operation
-- `open_delim`: the opening delimiter to insert
-- `close_delim`: the closing delimiter to insert
+- `map`: the key sequence that triggers the surround operation,
+- `open_delim`: the opening delimiter to insert,
+- `close_delim`: the closing delimiter to insert,
 - `action`: can be `'append'` or `'delete'`.
 
 Example:
