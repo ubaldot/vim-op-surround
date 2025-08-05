@@ -85,7 +85,7 @@ if exists('g:op_surround_maps')
   endfor
 endif
 
-def OpSurroundMakeMaps()
+def OpSurroundMakeMappings()
   if exists('g:op_surround_maps')
     for item in g:op_surround_maps
       if empty(maparg(item.map, 'n'))
@@ -109,4 +109,4 @@ def OpSurroundMakeMaps()
   endif
 enddef
 
-command! -nargs=0 OpSurroundMakeMaps OpSurroundMakeMaps()
+command! -nargs=0 OpSurroundMakeMappings OpSurroundMakeMappings()
