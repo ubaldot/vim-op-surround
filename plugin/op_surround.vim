@@ -13,7 +13,7 @@ endif
 if exists('g:op_surround_loaded') && g:op_surround_loaded
   finish
 endif
-g:op_surround_loaded = true
+g:op_surround_loaded = false
 
 import autoload "./../autoload/funcs.vim" as funcs
 
@@ -36,7 +36,6 @@ if exists('g:op_surround_maps')
   endfor
 endif
 
-messages clear
 def OpSurroundMakeMappings()
   if exists('g:op_surround_maps')
     for item in g:op_surround_maps
@@ -44,7 +43,7 @@ def OpSurroundMakeMappings()
         exe $"nnoremap {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
           .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
       endif
-      if empty(maparg(item.map, 'x'))
+      if empty(maparg(item.map, 'v'))
         exe $"xnoremap {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
           .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
       endif

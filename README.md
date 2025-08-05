@@ -33,9 +33,11 @@ Each mapping dictionary must include the following keys:
 
 ```vim
 # Set typical surroundings such as parenthesis, brackets, quotes, ...
-g:op_surround_maps = []
-for [open, close] in [("(", ")"), ("[", "]"), ("{", "}"),
-    ('"', '"'), ("''", "''")]
+g:op_surround_maps = [
+  {map: "sa'", open_delim: "''", close_delim: "''", action: "append"},
+  {map: "sd'", open_delim: "''", close_delim: "''", action: "delete"}
+]
+for [open, close] in [["(", ")"], ["[", "]"], ["{", "}"], ['"', '"']]
   # Append mappings
   add(g:op_surround_maps, {
     map: $"sa{open}",
