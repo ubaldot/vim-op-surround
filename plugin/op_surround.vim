@@ -17,17 +17,9 @@ g:op_surround_loaded = true
 
 import autoload "./../autoload/funcs.vim" as funcs
 
-export def Echoerr(msg: string)
-  echohl ErrorMsg | echom $'[op-surround] {msg}' | echohl None
-enddef
-
-export def Echowarn(msg: string)
-  echohl WarningMsg | echom $'[op-surround] {msg}' | echohl None
-enddef
-
 if exists('g:op_surround_maps')
     && type(g:op_surround_maps) != v:t_list
-  Echoerr("'g:op_surround_maps' shall be a list of dict")
+  funcs.Echoerr("'g:op_surround_maps' shall be a list of dict")
   finish
 endif
 
@@ -35,25 +27,26 @@ if exists('g:op_surround_maps')
   for item in g:op_surround_maps
     if empty(maparg(item.map, 'n'))
       exe $"nnoremap {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
-           .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+        .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
     endif
     if empty(maparg(item.map, 'x'))
       exe $"xnoremap {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
-           .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+        .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
     endif
   endfor
 endif
 
+messages clear
 def OpSurroundMakeMappings()
   if exists('g:op_surround_maps')
     for item in g:op_surround_maps
       if empty(maparg(item.map, 'n'))
         exe $"nnoremap {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
-             .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+          .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
       endif
       if empty(maparg(item.map, 'x'))
         exe $"xnoremap {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
-             .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+          .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
       endif
     endfor
   endif
@@ -62,14 +55,15 @@ def OpSurroundMakeMappings()
     for item in b:op_surround_maps
       if !maparg(item.map, 'n', 0, 1)->get('buffer', false)
         exe $"nnoremap <buffer> {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
-          .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+          .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
       endif
       if !maparg(item.map, 'v', 0, 1)->get('buffer', false)
         exe $"xnoremap <buffer> {item.map} <ScriptCmd>funcs.SetSurroundOpFunc("
-          .. $" '{item.open_delim}', '{item.close_delim}')<cr>g@"
+          .. $" '{item.open_delim}', '{item.close_delim}', '{item.action}')<cr>g@"
       endif
     endfor
   endif
 enddef
+
 OpSurroundMakeMappings()
 command! -nargs=0 OpSurroundMakeMappings OpSurroundMakeMappings()
