@@ -119,7 +119,6 @@ def g:Test_multibyte()
   ]
   OpSurroundMakeMappings
 
-  messages clear
   setcursorcharpos(1, 8)
   exe "norm sa(iw"
   var expected_value = "当然可以，(以下是一段中文文本)："
@@ -130,11 +129,13 @@ def g:Test_multibyte()
   assert_equal(expected_value, getline(1))
 
   setcursorcharpos(3, 8)
-  exe "norm vj[["
+  exe "norm vjsa["
   var expected_value_multiline =<< trim END
-    在现代社会中，\[科技的迅速发展改变了人们的生活方式。从智能手机到人工智能，
-    人们越来越依赖技\]术来完成日常任务。
+    在现代社会中，[科技的迅速发展改变了人们的生活方式。从智能手机到人工智能，
+    人们越来越依赖技]术来完成日常任务。
   END
+  echom expected_value_multiline
+  echom getline(3, 4)
   assert_equal(expected_value_multiline, getline(3, 4))
 
   # Multibyte delimiter
