@@ -6,7 +6,7 @@ The usage follows Vim idioms, adhering to the `<your_map>{motion}` pattern.
 For example, `sa"iw` surrounds the word under the cursor with double quotes,
 and `sa(fa` surrounds the text from the cursor to the next a with parentheses—
 assuming you’ve defined such mappings (see below). It also works in visual
-mode.
+mode and it supports multi-byte characters.
 
 # Requirements
 
@@ -28,6 +28,7 @@ Each mapping dictionary must include the following keys:
 ### Example
 
 ```vim
+# Set typical surroundings such as parenthesis, brackets, quotes, ...
 g:op_surround_maps = []
 for [open, close] in [("(", ")"), ("[", "]"), ("{", "}"),
     ('"', '"'), ("''", "''")]
@@ -47,14 +48,9 @@ for [open, close] in [("(", ")"), ("[", "]"), ("{", "}"),
 endfor
 ```
 
-The above example set surrounding mappings for typical surrounding items such
-as parenthesis, brackets, quotes, etc.
-
 In the same way, you can define buffer-local surrounding maps through the
 dictionary `b:op_surround_maps` followed by the command
-`:OpSurroundMakeMappings`.
-
-This also works in _visual mode_.
+`:OpSurroundMakeMappings` to actually set the mappings.
 
 ## License
 
