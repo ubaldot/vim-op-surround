@@ -10,7 +10,7 @@ if !has('vim9script') ||  v:version < 900
   finish
 endif
 
-g:op_surround_loaded = false
+g:op_surround_loaded = true
 
 import autoload "./../autoload/funcs.vim" as funcs
 
