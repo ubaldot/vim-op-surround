@@ -12,7 +12,7 @@ endif
 
 g:op_surround_loaded = true
 
-import autoload "./../autoload/funcs.vim" as funcs
+import autoload "./../lib/funcs.vim" as funcs
 
 if exists('g:op_surround_maps')
     && type(g:op_surround_maps) != v:t_list
